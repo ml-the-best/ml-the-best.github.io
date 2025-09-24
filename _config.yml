@@ -1,1 +1,3 @@
-
+title: 我的个人网站  
+description: 记录我的生活与思考  # 网站描述
+theme: minima  # 使用Jekyll默认主题minima，确保美观
