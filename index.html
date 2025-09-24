@@ -1,23 +1,34 @@
 ---
+# 必须有的Jekyll头信息
 layout: home
-title: 我的个人网站
-description: 记录生活与思考的地方
+title: 我的博客
 permalink: /
 ---
 
-# 欢迎来到{{ site.title }}！
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ site.title }}</title>
+</head>
+<body>
+    <h1>{{ site.title }}</h1>
+    
+    <!-- 核心：文章列表循环 -->
+    <h2>最新文章</h2>
+    <ul class="post-list">
+      {% for post in site.posts %}
+        <li>
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
 
-{{ site.description }}
-
-## 📚 最新文章
-
-<ul class="post-list">
-  {% for post in site.posts %}
-    <li>
-      <span class="post-meta">{{ post.date | date: "%Y年%m月%d日" }}</span>
-      <a class="post-link" href="{{ post.url | relative_url }}">
-        {{ post.title | escape }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+    <!-- 可选：添加基础样式 -->
+    <style>
+        .post-list { list-style-type: none; padding-left: 0; }
+        .post-date { color: #666; margin-right: 15px; }
+    </style>
+</body>
+</html>
